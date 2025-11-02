@@ -1,0 +1,10 @@
+artifact_location: file:///Users/habiebatousam/projects/heart-disease-ml-analysis/mlruns/802278819167037649/models/m-7a654d8612114afdb69f58bf3ecc72a4/artifacts
+creation_timestamp: 1762058695344
+experiment_id: '802278819167037649'
+last_updated_timestamp: 1762058696172
+model_id: m-7a654d8612114afdb69f58bf3ecc72a4
+model_type: null
+name: MultinomialNB_model
+source_run_id: fe4859e323f44da9aec0a772104846ef
+status: 2
+status_message: null

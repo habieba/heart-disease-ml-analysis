@@ -16,6 +16,8 @@ df = df.apply(pd.to_numeric)
 #converted to binary classification
 df['presence'] = df['presence'].apply(lambda x: 1 if x > 0 else 0)
 
+df.to_csv("data/cleaned_cleveland.csv", index=False)
+
 print(df.head())
 print(df['presence'].value_counts())
 

@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/habiebatousam/projects/heart-disease-ml-analysis/mlruns/802278819167037649/e51c9d20df3446d48fd1ed318843892b/artifacts
+end_time: 1762058939185
+entry_point_name: ''
+experiment_id: '802278819167037649'
+lifecycle_stage: active
+run_id: e51c9d20df3446d48fd1ed318843892b
+run_name: GaussianNB
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762058938154
+status: 3
+tags: []
+user_id: habiebatousam

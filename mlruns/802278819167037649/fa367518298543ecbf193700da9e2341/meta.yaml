@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/habiebatousam/projects/heart-disease-ml-analysis/mlruns/802278819167037649/fa367518298543ecbf193700da9e2341/artifacts
+end_time: 1762058940950
+entry_point_name: ''
+experiment_id: '802278819167037649'
+lifecycle_stage: active
+run_id: fa367518298543ecbf193700da9e2341
+run_name: MultinomialNB
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762058940141
+status: 3
+tags: []
+user_id: habiebatousam
