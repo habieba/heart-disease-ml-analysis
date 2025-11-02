@@ -1,0 +1,10 @@
+artifact_location: file:///Users/habiebatousam/projects/heart-disease-ml-analysis/mlruns/802278819167037649/models/m-351a1c2f84a84f6e83bbc2d964de3b7e/artifacts
+creation_timestamp: 1762113424336
+experiment_id: '802278819167037649'
+last_updated_timestamp: 1762113425177
+model_id: m-351a1c2f84a84f6e83bbc2d964de3b7e
+model_type: null
+name: SqrtTransformRegression_model
+source_run_id: be98654720bd4a99b623a4f5075e021d
+status: 2
+status_message: null

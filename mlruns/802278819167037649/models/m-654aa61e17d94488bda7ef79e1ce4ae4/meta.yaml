@@ -1,0 +1,10 @@
+artifact_location: file:///Users/habiebatousam/projects/heart-disease-ml-analysis/mlruns/802278819167037649/models/m-654aa61e17d94488bda7ef79e1ce4ae4/artifacts
+creation_timestamp: 1762113008187
+experiment_id: '802278819167037649'
+last_updated_timestamp: 1762113009263
+model_id: m-654aa61e17d94488bda7ef79e1ce4ae4
+model_type: null
+name: GaussianNB_model
+source_run_id: c2458c57629f4febb65f7befdc29146b
+status: 2
+status_message: null

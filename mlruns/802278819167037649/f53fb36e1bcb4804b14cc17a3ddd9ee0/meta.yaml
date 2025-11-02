@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/habiebatousam/projects/heart-disease-ml-analysis/mlruns/802278819167037649/f53fb36e1bcb4804b14cc17a3ddd9ee0/artifacts
+end_time: 1762113012943
+entry_point_name: ''
+experiment_id: '802278819167037649'
+lifecycle_stage: active
+run_id: f53fb36e1bcb4804b14cc17a3ddd9ee0
+run_name: DecisionTree_entropy
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762113012031
+status: 3
+tags: []
+user_id: habiebatousam

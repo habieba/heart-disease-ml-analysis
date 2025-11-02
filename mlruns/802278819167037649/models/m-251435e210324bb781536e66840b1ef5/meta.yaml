@@ -1,0 +1,10 @@
+artifact_location: file:///Users/habiebatousam/projects/heart-disease-ml-analysis/mlruns/802278819167037649/models/m-251435e210324bb781536e66840b1ef5/artifacts
+creation_timestamp: 1762113012037
+experiment_id: '802278819167037649'
+last_updated_timestamp: 1762113012942
+model_id: m-251435e210324bb781536e66840b1ef5
+model_type: null
+name: DecisionTree_entropy_model
+source_run_id: f53fb36e1bcb4804b14cc17a3ddd9ee0
+status: 2
+status_message: null

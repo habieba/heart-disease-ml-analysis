@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/habiebatousam/projects/heart-disease-ml-analysis/mlruns/802278819167037649/da5bcdc858754e9199409d65753b9900/artifacts
+end_time: 1762113010151
+entry_point_name: ''
+experiment_id: '802278819167037649'
+lifecycle_stage: active
+run_id: da5bcdc858754e9199409d65753b9900
+run_name: BernoulliNB
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762113009322
+status: 3
+tags: []
+user_id: habiebatousam

@@ -1,43 +1,62 @@
-from ucimlrepo import fetch_ucirepo
+# data.py
+"""
+Always fetch the UCI Heart Disease dataset programmatically (no manual files).
+- Source: UCI Machine Learning Repository via `ucimlrepo` (id=45)
+- Target standardized to binary `presence` (1: disease, 0: no disease)
+- Returns cleaned pandas DataFrame via `load_dataset()`
+- Provides `get_X_y(df)` for modeling
+"""
+
+from __future__ import annotations
 import pandas as pd
 
-# fetch dataset
-heart_disease = fetch_ucirepo(id=45)
-X_raw = heart_disease.data.features
-y_raw = heart_disease.data.targets
+try:
+    from ucimlrepo import fetch_ucirepo  # pip install ucimlrepo
+except Exception as e:
+    raise ImportError(
+        "ucimlrepo is required to fetch the dataset automatically. "
+        "Install with: pip install ucimlrepo"
+    ) from e
 
-# Perform all the cleaning steps
-heart_disease_df = pd.concat([X_raw, y_raw], axis=1).dropna()
+def _clean_df(df: pd.DataFrame) -> pd.DataFrame:
+    """Clean and standardize the combined UCI heart dataset to Cleveland-like schema."""
+    # unify target
+    if "presence" not in df.columns:
+        if "num" in df.columns:
+            df = df.rename(columns={"num": "presence"})
+        else:
+            raise KeyError("Expected 'num' (or 'presence') column in UCI dataset.")
 
-# Define the final, clean X and y that will be imported
-X = heart_disease_df.drop(['num', 'chol'], axis=1)
-y_regression = heart_disease_df['chol']         # regression target
-y_classification = heart_disease_df['num']      # classification target
-print(heart_disease.metadata, X_raw)
+    # Remove rows with any missing values and coerce numerics
+    df = df.copy()
+    df = df.apply(pd.to_numeric, errors="coerce")
+    df = df.dropna()
 
-# variable information
-print(heart_disease.variables, y_raw)
-import pandas as pd
+    # Binary target: >0 -> 1
+    df["presence"] = df["presence"].apply(lambda x: 1 if x > 0 else 0)
 
-columns = [
-    "age", "sex", "cp", "trestbps", "chol", "fbs", "restecg",
-    "thalach", "exang", "oldpeak", "slope", "ca", "thal", "presence"
-]
+    # Drop duplicates, reset index
+    df = df.drop_duplicates().reset_index(drop=True)
+    return df
 
-df = pd.read_csv("Data/processed.cleveland.data", names=columns, na_values='?')
-
-#dropped all the rows with missing vales
-df = df.dropna()
-
-#ensures all data is numeric
-df = df.apply(pd.to_numeric)
-
-#converted to binary classification
-df['presence'] = df['presence'].apply(lambda x: 1 if x > 0 else 0)
-
-df.to_csv("data/cleaned_cleveland.csv", index=False)
-
-print(df.head())
-print(df['presence'].value_counts())
+def load_dataset() -> pd.DataFrame:
+    """
+    Fetch UCI id=45 via ucimlrepo and return a cleaned DataFrame.
+    """
+    heart = fetch_ucirepo(id=45)
+    X = heart.data.features
+    y = heart.data.targets
+    df = pd.concat([X, y], axis=1)
+    df = _clean_df(df)
+    return df
 
 
+def get_X_y(df: pd.DataFrame):
+    """
+    Return (X, y) for classification. Drop 'thalach' to mirror previous runs, if present.
+    """
+    target = "presence"
+    drop_cols = [target, "thalach"] if "thalach" in df.columns else [target]
+    X = df.drop(columns=drop_cols, errors="ignore")
+    y = df[target]
+    return X, y

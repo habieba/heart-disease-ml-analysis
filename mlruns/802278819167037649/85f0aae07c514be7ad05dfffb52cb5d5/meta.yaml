@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/habiebatousam/projects/heart-disease-ml-analysis/mlruns/802278819167037649/85f0aae07c514be7ad05dfffb52cb5d5/artifacts
+end_time: 1762113428643
+entry_point_name: ''
+experiment_id: '802278819167037649'
+lifecycle_stage: active
+run_id: 85f0aae07c514be7ad05dfffb52cb5d5
+run_name: DecisionTreeRegressor_tuned
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762113427793
+status: 3
+tags: []
+user_id: habiebatousam

@@ -1,0 +1,10 @@
+artifact_location: file:///Users/habiebatousam/projects/heart-disease-ml-analysis/mlruns/802278819167037649/models/m-bdcd0789b8b9408ca12fe68e7ecb3e17/artifacts
+creation_timestamp: 1762113423444
+experiment_id: '802278819167037649'
+last_updated_timestamp: 1762113424277
+model_id: m-bdcd0789b8b9408ca12fe68e7ecb3e17
+model_type: null
+name: PolynomialRegression_model
+source_run_id: 3dff734324344115bf1a57b7f3c24d49
+status: 2
+status_message: null

@@ -1,80 +1,68 @@
-from sklearn.preprocessing import PolynomialFeatures, StandardScaler, FunctionTransformer, OneHotEncoder
+
+# features.py
+from sklearn.preprocessing import PolynomialFeatures, StandardScaler, FunctionTransformer, OneHotEncoder, MinMaxScaler
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 import numpy as np
+import pandas as pd
 
-def preprocessor(type):
+# New: use data1.py as the single source of truth for loading data
+try:
+    import data as data_src
+except ImportError:
+    # Fallback to local import if the module name/environment differs
+    import data as data_src
+
+
+def preprocessor(kind: str = "linear"):
     """
-        creates preprocessing pipeline for numeric and categorical features.
-
-    :param type:
-            model_type (str, optional): The type of numeric pipeline to create.
-            Valid options are 'polynomial', 'sqrt', or 'linear'.
-            Defaults to 'linear'.
-    :return:
-            ColumnTransformer: The configured preprocessing object
-
+    Create preprocessing pipeline for numeric and categorical features.
+    Valid kinds: 'polynomial', 'sqrt', 'linear' (default).
     """
-    if type == "polynomial":
+    if kind == "polynomial":
         numeric_pipeline = Pipeline(steps=[
-            ('imputer' , SimpleImputer(strategy='mean')),
+            ('imputer', SimpleImputer(strategy='mean')),
             ('features', PolynomialFeatures(degree=2, include_bias=False)),
-            ('scaler' , StandardScaler())]
-)
-    elif type == 'sqrt':
-        numeric_pipeline = Pipeline(steps=[
-            ('imputer' , SimpleImputer(strategy='mean')),
-            ('features', FunctionTransformer(lambda X: np.sign(X) * np.abs(X)**0.2, validate=False)),
-            ('scaler' , StandardScaler())
+            ('scaler', StandardScaler())
         ])
-
+    elif kind == "sqrt":
+        numeric_pipeline = Pipeline(steps=[
+            ('imputer', SimpleImputer(strategy='mean')),
+            ('features', FunctionTransformer(lambda X: np.sign(X) * np.abs(X)**0.2, validate=False)),
+            ('scaler', StandardScaler())
+        ])
     else:
         numeric_pipeline = Pipeline(steps=[
-            ('imputer' , SimpleImputer(strategy='mean')),
-            ('scaler' , StandardScaler())
-            ]
-        )
+            ('imputer', SimpleImputer(strategy='mean')),
+            ('scaler', StandardScaler())
+        ])
 
     categorical_pipeline = Pipeline(steps=[
         ('imputer', SimpleImputer(strategy='most_frequent')),
-        ('encoder', OneHotEncoder(handle_unknown='ignore'))]
-    )
-    transformer = ColumnTransformer(transformers=
-            [
-            ('numeric_features', numeric_pipeline, ['age', 'trestbps', 'thalach', 'oldpeak']),
-            ('categorical_features',categorical_pipeline, ['sex', 'cp', 'fbs', 'restecg', 'exang', 'slope', 'ca', 'thal'])
-            ]
-    )
-    return transformer
-# src/features.py
-import pandas as pd
-from sklearn.preprocessing import StandardScaler, OneHotEncoder
-from sklearn.compose import ColumnTransformer
-from sklearn.pipeline import Pipeline
+        ('encoder', OneHotEncoder(handle_unknown='ignore'))
+    ])
 
-def build_preprocessor(task="classification"):
-    """
-    Create a reusable preprocessor pipeline for numeric and categorical features.
-    Returns a ColumnTransformer object.
-    """
-    if task == "classification":
-        numeric_features = ['age', 'trestbps', 'chol', 'oldpeak']
-    else:  # regression includes thalach as input target
-        numeric_features = ['age', 'trestbps', 'chol', 'oldpeak']
-
+    # Keep a robust core feature set found in UCI Cleveland-like schema
+    numeric_features = ['age', 'trestbps', 'chol', 'oldpeak']
     categorical_features = ['sex', 'cp', 'fbs', 'restecg', 'exang', 'slope', 'ca', 'thal']
 
-    preprocessor = ColumnTransformer(
-        transformers=[
-            ('num', StandardScaler(), numeric_features),
-            ('cat', OneHotEncoder(handle_unknown='ignore'), categorical_features)
-        ]
-    )
-    return preprocessor
+    transformer = ColumnTransformer(transformers=[
+        ('numeric_features', numeric_pipeline, numeric_features),
+        ('categorical_features', categorical_pipeline, categorical_features)
+    ])
+    return transformer
 
 
-def load_data(data_path="data/cleaned_heart.csv"):
-    """Load cleaned heart dataset."""
-    df = pd.read_csv(data_path)
-    return df
+def build_preprocessor(task: str = "classification"):
+    """
+    Thin wrapper for compatibility with existing code.
+    """
+    return preprocessor("linear")
+
+
+def load_data() -> pd.DataFrame:
+    """
+    Load the cleaned UCI Heart Disease dataset through data1.py.
+    """
+    return data_src.load_dataset()

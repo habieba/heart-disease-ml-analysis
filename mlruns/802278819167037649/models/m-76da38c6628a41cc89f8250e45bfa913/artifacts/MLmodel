@@ -1,0 +1,22 @@
+artifact_path: file:///Users/habiebatousam/projects/heart-disease-ml-analysis/mlruns/802278819167037649/models/m-76da38c6628a41cc89f8250e45bfa913/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.13.2
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.2
+mlflow_version: 3.5.1
+model_id: m-76da38c6628a41cc89f8250e45bfa913
+model_size_bytes: 3809
+model_uuid: m-76da38c6628a41cc89f8250e45bfa913
+prompts: null
+run_id: ae53d79041b24b25b74c7f49e32c1fb8
+utc_time_created: '2025-11-02 19:56:23.005585'

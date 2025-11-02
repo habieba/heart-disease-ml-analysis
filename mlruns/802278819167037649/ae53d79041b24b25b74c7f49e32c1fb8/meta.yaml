@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/habiebatousam/projects/heart-disease-ml-analysis/mlruns/802278819167037649/ae53d79041b24b25b74c7f49e32c1fb8/artifacts
+end_time: 1762113383888
+entry_point_name: ''
+experiment_id: '802278819167037649'
+lifecycle_stage: active
+run_id: ae53d79041b24b25b74c7f49e32c1fb8
+run_name: LogisticRegression
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762113382995
+status: 3
+tags: []
+user_id: habiebatousam
