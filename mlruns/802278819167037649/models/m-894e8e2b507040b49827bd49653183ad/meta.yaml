@@ -1,0 +1,10 @@
+artifact_location: file:///Users/habiebatousam/projects/heart-disease-ml-analysis/mlruns/802278819167037649/models/m-894e8e2b507040b49827bd49653183ad/artifacts
+creation_timestamp: 1762116305720
+experiment_id: '802278819167037649'
+last_updated_timestamp: 1762116306784
+model_id: m-894e8e2b507040b49827bd49653183ad
+model_type: null
+name: LinearRegression_model
+source_run_id: 0c0d1234d9dc4e97a788c57ed8dec78e
+status: 2
+status_message: null

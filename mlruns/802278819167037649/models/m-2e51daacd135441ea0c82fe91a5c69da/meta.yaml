@@ -1,0 +1,10 @@
+artifact_location: file:///Users/habiebatousam/projects/heart-disease-ml-analysis/mlruns/802278819167037649/models/m-2e51daacd135441ea0c82fe91a5c69da/artifacts
+creation_timestamp: 1762116216392
+experiment_id: '802278819167037649'
+last_updated_timestamp: 1762116217224
+model_id: m-2e51daacd135441ea0c82fe91a5c69da
+model_type: null
+name: RandomForest_model
+source_run_id: 83abead02a4e429fb23b5826a6d8db69
+status: 2
+status_message: null

@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/habiebatousam/projects/heart-disease-ml-analysis/mlruns/802278819167037649/d710d65b60e7426683b16396bea03d5b/artifacts
+end_time: 1762116307718
+entry_point_name: ''
+experiment_id: '802278819167037649'
+lifecycle_stage: active
+run_id: d710d65b60e7426683b16396bea03d5b
+run_name: PolynomialRegression
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762116306857
+status: 3
+tags: []
+user_id: habiebatousam

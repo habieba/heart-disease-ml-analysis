@@ -1,0 +1,10 @@
+artifact_location: file:///Users/habiebatousam/projects/heart-disease-ml-analysis/mlruns/802278819167037649/models/m-6c1fcc5ad96c46218575b71d059c1c54/artifacts
+creation_timestamp: 1762116215424
+experiment_id: '802278819167037649'
+last_updated_timestamp: 1762116216233
+model_id: m-6c1fcc5ad96c46218575b71d059c1c54
+model_type: null
+name: DecisionTree_tuned_model
+source_run_id: e37592cea96e4b749eca0976bb6a4c6e
+status: 2
+status_message: null

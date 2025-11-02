@@ -8,11 +8,8 @@ import numpy as np
 import pandas as pd
 
 # New: use data1.py as the single source of truth for loading data
-try:
-    import data as data_src
-except ImportError:
-    # Fallback to local import if the module name/environment differs
-    import data as data_src
+import data as data_src
+
 
 
 def preprocessor(kind: str = "linear"):

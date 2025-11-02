@@ -1,0 +1,10 @@
+artifact_location: file:///Users/habiebatousam/projects/heart-disease-ml-analysis/mlruns/802278819167037649/models/m-2470dc41a6d3415784067328c6b743a7/artifacts
+creation_timestamp: 1762116212382
+experiment_id: '802278819167037649'
+last_updated_timestamp: 1762116213191
+model_id: m-2470dc41a6d3415784067328c6b743a7
+model_type: null
+name: DecisionTree_gini_model
+source_run_id: e6509aa4ed804ba29ac4d27ab3aab405
+status: 2
+status_message: null

@@ -1,4 +1,3 @@
-
 # evaluate.py
 
 import os
@@ -32,7 +31,7 @@ def evaluate_classification_model(model, X_test, y_test, model_name="Model", log
     f1 = f1_score(y_test, y_pred)
     auc = roc_auc_score(y_test, y_proba) if y_proba is not None else None
 
-    print(f"\n📊 {model_name} Evaluation:")
+    print(f"\\n📊 {model_name} Evaluation:")
     print(f"  Accuracy : {acc:.4f}")
     print(f"  F1 Score : {f1:.4f}")
     print(f"  ROC-AUC  : {auc:.4f}" if auc is not None else "  ROC-AUC  : N/A (no predict_proba)")
@@ -81,7 +80,8 @@ def evaluate_classification_model(model, X_test, y_test, model_name="Model", log
 def evaluate_regression_model(model, X_test, y_test, model_name="Regressor", log_to_mlflow=True):
     """
     Universal evaluation for regression models.
-    Computes RMSE/MAE/R2, creates parity + residual plots, and logs to MLflow.
+    Computes RMSE/MAE/R2, creates parity plot, residual histogram,
+    and residuals-vs-predicted scatter; logs all to MLflow.
     Returns: rmse, mae, r2, y_pred
     """
     y_pred = model.predict(X_test)
@@ -90,7 +90,7 @@ def evaluate_regression_model(model, X_test, y_test, model_name="Regressor", log
     mae = mean_absolute_error(y_test, y_pred)
     r2 = r2_score(y_test, y_pred)
 
-    print(f"\n📈 {model_name} Evaluation:")
+    print(f"\\n📈 {model_name} Evaluation:")
     print(f"  RMSE : {rmse:.4f}")
     print(f"  MAE  : {mae:.4f}")
     print(f"  R^2  : {r2:.4f}")
@@ -111,8 +111,25 @@ def evaluate_regression_model(model, X_test, y_test, model_name="Regressor", log
     plt.savefig(parity_path)
     plt.close()
 
-    # Residuals histogram
+    # Residuals
     residuals = y_test - y_pred
+
+    # Residuals vs Predicted
+    res_vs_pred_path = None
+    try:
+        plt.figure()
+        plt.scatter(y_pred, residuals, alpha=0.7)
+        plt.axhline(0, linestyle='--')
+        plt.xlabel("Predicted")
+        plt.ylabel("Residual (True - Pred)")
+        plt.title(f"Residuals vs Predicted – {model_name}")
+        res_vs_pred_path = f"models/plots/{model_name}_residuals_vs_pred.png"
+        plt.savefig(res_vs_pred_path)
+        plt.close()
+    except Exception:
+        res_vs_pred_path = None
+
+    # Residuals histogram
     plt.figure()
     plt.hist(residuals, bins=20)
     plt.title(f"Residuals – {model_name}")
@@ -130,6 +147,8 @@ def evaluate_regression_model(model, X_test, y_test, model_name="Regressor", log
             mlflow.log_metric("r2", r2)
             mlflow.log_artifact(parity_path)
             mlflow.log_artifact(resid_path)
+            if res_vs_pred_path is not None:
+                mlflow.log_artifact(res_vs_pred_path)
             mlflow.sklearn.log_model(model, name=f"{model_name}_model")
 
     return rmse, mae, r2, y_pred

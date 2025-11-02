@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/habiebatousam/projects/heart-disease-ml-analysis/mlruns/802278819167037649/4fb325efcb564ac8ac25c2e433cbfeb9/artifacts
+end_time: 1762116308642
+entry_point_name: ''
+experiment_id: '802278819167037649'
+lifecycle_stage: active
+run_id: 4fb325efcb564ac8ac25c2e433cbfeb9
+run_name: SqrtTransformRegression
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762116307791
+status: 3
+tags: []
+user_id: habiebatousam

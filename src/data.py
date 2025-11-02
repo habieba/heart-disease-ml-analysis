@@ -18,6 +18,7 @@ except Exception as e:
         "Install with: pip install ucimlrepo"
     ) from e
 
+
 def _clean_df(df: pd.DataFrame) -> pd.DataFrame:
     """Clean and standardize the combined UCI heart dataset to Cleveland-like schema."""
     # unify target
@@ -38,6 +39,7 @@ def _clean_df(df: pd.DataFrame) -> pd.DataFrame:
     # Drop duplicates, reset index
     df = df.drop_duplicates().reset_index(drop=True)
     return df
+
 
 def load_dataset() -> pd.DataFrame:
     """
