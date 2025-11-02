@@ -1,0 +1,10 @@
+artifact_location: file:///Users/habiebatousam/projects/heart-disease-ml-analysis/mlruns/802278819167037649/models/m-62e0345e17db4b6594040378fff5f8c8/artifacts
+creation_timestamp: 1762058282817
+experiment_id: '802278819167037649'
+last_updated_timestamp: 1762058283614
+model_id: m-62e0345e17db4b6594040378fff5f8c8
+model_type: null
+name: LogisticRegression_model
+source_run_id: 1dd7717e47e34e2382c8f5357b482d1f
+status: 2
+status_message: null

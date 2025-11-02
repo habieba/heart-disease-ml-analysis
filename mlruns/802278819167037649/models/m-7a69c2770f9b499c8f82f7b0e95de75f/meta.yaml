@@ -1,0 +1,10 @@
+artifact_location: file:///Users/habiebatousam/projects/heart-disease-ml-analysis/mlruns/802278819167037649/models/m-7a69c2770f9b499c8f82f7b0e95de75f/artifacts
+creation_timestamp: 1762058281050
+experiment_id: '802278819167037649'
+last_updated_timestamp: 1762058281885
+model_id: m-7a69c2770f9b499c8f82f7b0e95de75f
+model_type: null
+name: BernoulliNB_model
+source_run_id: e94879ef0b8c482a8dbfa00712728693
+status: 2
+status_message: null
